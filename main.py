@@ -9,8 +9,11 @@ def f_run_bot():
     print('Trading bot started!')
     config = f_check_for_config()
     auth_client = f_authenticate_client(config[0]['Key'], config[0]['Secret'], config[0]['Passphrase'])
-    print(auth_client.get_accounts())
-   
+    try:
+        print(auth_client.get_accounts())
+    except:
+        sys.exit('Could not get account info!')
+
 
 # This function is used to check for a config file and return data inside of it
 def f_check_for_config():
@@ -36,6 +39,7 @@ def f_load_config_file(path):
 # This function is used to authenticate a client
 def f_authenticate_client(key, secret, passphrase):
     return cbp.AuthenticatedClient(key=key, secret=secret, passphrase=passphrase)
+
 
 
 # This function calls the function to run the trading bot

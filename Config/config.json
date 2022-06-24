@@ -2,6 +2,6 @@
     {
         "Key": "key",
         "Secret": "secret",
-        "Passphase": "passphase"
+        "Passphrase": "passphrase"
     }
 ]
