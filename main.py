@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 
@@ -6,12 +7,15 @@ import sys
 def f_run_bot():
     print('Trading bot started!')
     config = f_check_for_config()
-
+    print(config[0]['Key'])
+    print(config[0]['Secret'])
+    print(config[0]['Passphase'])
+   
 
 # This function is used to check for a config file and return data inside of it
 def f_check_for_config():
     print('Checking for config file!')
-    config_path = 'Config/config.cfg'
+    config_path = 'Config/config.json'
     if os.path.isfile(config_path):
         print('Config file found!')
         return f_load_config_file(config_path)
@@ -25,7 +29,7 @@ def f_load_config_file(p_path):
     config_path = p_path
     try:
         with open(config_path) as file:
-            print(file.readlines())
+               return json.load(file)
     except IOError:
         sys.exit('Config file could not be accessed!')
 
