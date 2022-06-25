@@ -1,7 +1,6 @@
 [
     {
-        "Key": "key",
-        "Secret": "secret",
-        "Passphrase": "passphrase"
+        "API_KEY": "key",
+        "SECRET_KEY": "secret"
     }
 ]

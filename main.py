@@ -1,4 +1,4 @@
-import coinbasepro as cbp
+from binance import *
 import json
 import os
 import sys
@@ -8,11 +8,8 @@ import sys
 def f_run_bot():
     print('Trading bot started!')
     config = f_check_for_config()
-    auth_client = f_authenticate_client(config[0]['Key'], config[0]['Secret'], config[0]['Passphrase'])
-    try:
-        print(auth_client.get_accounts())
-    except:
-        sys.exit('Could not get account info!')
+    auth_client = f_authenticate_client(config[0]['API_KEY'], config[0]['SECRET_KEY'])
+    
 
 
 # This function is used to check for a config file and return data inside of it
@@ -37,9 +34,8 @@ def f_load_config_file(path):
         sys.exit('Config file could not be accessed!')
 
 # This function is used to authenticate a client
-def f_authenticate_client(key, secret, passphrase):
-    return cbp.AuthenticatedClient(key=key, secret=secret, passphrase=passphrase)
-
+def f_authenticate_client(key, secret):
+    return Client(key, secret)
 
 
 # This function calls the function to run the trading bot
